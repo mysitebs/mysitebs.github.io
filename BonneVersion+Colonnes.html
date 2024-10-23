@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Interactif</title>
+    <style>
+        /* Style global du site */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://imag.malavida.com/mvimgbig/download-fs/brawl-stars-21357-6.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        /* Style du conteneur */
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin: 100px auto;
+            width: 80%;
+            border-radius: 10px;
+        }
+
+        /* Style du menu */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Sous-menu pour Brawlers */
+        .submenu {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .submenu a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 5px;
+        }
+
+        .submenu a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Style des pages */
+        section {
+            display: none;
+        }
+
+        /* Page visible */
+        section.active {
+            display: block;
+        }
+
+        /* Style pour les images des brawlers */
+        .brawler {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .brawler img, .brawler h3 {
+            cursor: pointer;
+        }
+
+        .brawler img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-right: 20px;
+        }
+
+        .brawler h3 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .description {
+            display: none;
+        }
+
+        /* Style pour les brawlers en grille */
+        .brawler-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Bouton Retour au-dessus */
+        .back-button {
+            margin-bottom: 20px;
+        }
+
+        .back-button button {
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue sur mon site!!</h1>
+        <p>Cliquez sur les onglets ci-dessous pour naviguer entre les différentes pages.</p>
+
+        <!-- Menu de navigation -->
+        <nav>
+            <a href="#" onclick="openPage('home')">Accueil</a>
+            <a href="#" onclick="openPage('brawlers')">Brawlers</a>
+            <a href="#" onclick="openPage('info')">Infos</a>
+        </nav>
+
+        <!-- Sous-menu pour Brawlers -->
+        <div id="brawlersMenu" class="submenu">
+            <a href="#" onclick="openPage('rare')">Rare</a>
+            <a href="#" onclick="openPage('super-rare')">Super Rare</a>
+            <a href="#" onclick="openPage('epic')">Épique</a>
+            <a href="#" onclick="openPage('mythic')">Mythique</a>
+            <a href="#" onclick="openPage('legendary')">Légendaire</a>
+        </div>
+
+        <!-- Contenu des pages -->
+        <section id="home" class="active">
+            <h2>Page d'Accueil</h2>
+            <p>Bienvenue sur la page d'accueil de mon site. Ici, tu trouveras tout ce dont tu as besoin. Explorez les onglets pour en savoir plus !</p>
+            <img src="https://cdn.discordapp.com/attachments/1284832989640916993/1292200940497277000/image0.gif?ex=6718a028&is=67174ea8&hm=74c822f0333048623db3d9ac92965cf21d36f6161cfe2c74a51981cd289edb1a&" width="300" height="200"> 
+        </section>
+
+        <section id="info">
+            <h2>Infos</h2>
+            <p>Pegasus ce GOAT</p>
+            <img src="https://i.redd.it/r6sjtteubu1z.jpg" width="300" height="200">     <img src="https://liquipedia.net/commons/images/7/77/Brawl_Mortis.png" width="300" height="200"> 
+            <p>Petit flex perso</p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKSSul6PtwYmmE7Es-PwyhMkk2LsXqtin1Ug&s" width="300" height="200">  <img src="https://pbs.twimg.com/media/GFVaZliXUAAThzb.jpg:large" width="300" height="200">
+
+            <p>Si vous avez des questions, vous pouvez nous contacter à l'adresse suivante : contact@mabeuteu.com</p>
+        </section>
+
+        <!-- Section Brawlers -->
+        <section id="brawlers">
+            <h2>Catégories des Brawlers</h2>
+            <p>Sélectionnez une catégorie pour voir les brawlers correspondants.</p>
+        </section>
+
+        <!-- Sections pour les Brawlers -->
+        <section id="legendary">
+            <h2>Brawlers Légendaires</h2>
+
+            <div class="back-button">
+                <button onclick="openPage('brawlers')">Retour</button>
+            </div>
+
+            <div class="brawler-grid">
+                <!-- Brawler 1 : Kenji -->
+                <div class="brawler" id="brawler-kenji">
+                    <img src="https://cdn.brawlify.com/brawlers/borders/16000085.png" alt="Kenji" onclick="showDescription('kenji')">
+                    <h3 onclick="showDescription('kenji')">Kenji</h3>
+                </div>
+                <div id="kenji" class="description">
+                    <p>
+                        Ce chef sushi hautement qualifié mène une vie saine en gérant son restaurant dans le parc Starr,
+                        mais on dirait qu'il essaie de cacher quelque chose de son passé... 
+                        même si son sushi est si bon, personne ne s'en soucie !
+                    </p>
+                    <button onclick="hideDescription()">Retour</button>
+                </div>
+
+                <!-- Brawler 2 : Draco -->
+                <div class="brawler" id="brawler-draco">
+                    <img src="https://cdn.brawlify.com/brawlers/borders/16000080.png" alt="Draco" onclick="showDescription('draco')">
+                    <h3 onclick="showDescription('draco')">Draco</h3>
+                </div>
+                <div id="draco" class="description">
+                    <p>
+                        Montant sur son dragon gonflable et lançant des feux d'artifice, Draco promet un final spectaculaire chaque nuit. 
+                        Avec sa guitare électrique qui gronde et sa monture crachant des flammes faisant vibrer la foule, il pousse la fantaisie à fond !
+                    </p>
+                    <button onclick="hideDescription()">Retour</button>
+                </div>
+
+                <!-- Brawler 3 : Kit -->
+                <div class="brawler" id="brawler-kit">
+                    <img src="https://cdn.brawlify.com/brawlers/borders/16000076.png" alt="Kit" onclick="showDescription('kit')">
+                    <h3 onclick="showDescription('kit')">Kit</h3>
+                </div>
+                <div id="kit" class="description">
+                    <p>
+                        Un jeune ingénieur à l'esprit vif, Kit est un véritable génie de l'invention, 
+                        qui adore tout ce qui est technologie et gadgets. Bien qu'il soit peut-être un peu maladroit,
+                        sa détermination et son intelligence le rendent unique !
+                    </p>
+                    <button onclick="hideDescription()">Retour</button>
+                </div>
+
+                <!-- Brawler 4 : Cordelius -->
+                <div class="brawler" id="brawler-cordelius">
+                    <img src="https://cdn.brawlify.com/brawlers/borders/16000070.png" alt="Cordelius" onclick="showDescription('cordelius')">
+                    <h3 onclick="showDescription('cordelius')">Cordelius</h3>
+                </div>
+                <div id="cordelius" class="description">
+                    <p>
+                        Cordelius, le sage guerrier, utilise ses pouvoirs pour défendre ses amis avec sa magie ancienne 
+                        et sa détermination inébranlable. Ses compétences stratégiques en font un atout précieux en combat !
+                    </p>
+                    <button onclick="hideDescription()">Retour</button>
+                </div>
+
+                <!-- Brawler 5 : Meg -->
+                <div class="brawler" id="brawler-meg">
+                    <img src="https://cdn.brawlify.com/brawlers/borders/16000052.png" alt="Meg" onclick="showDescription('meg')">
+                    <h3 onclick="showDescription('meg')">Meg</h3>
+                </div>
+                <div id="meg" class="description">
+                    <p>
+                        Meg est la créatrice de la toute nouvelle technologie de Brawl Stars et utilise ses inventions 
+                        pour obtenir un avantage sur ses ennemis. Avec son esprit inventif, elle peut tout faire !
+                    </p>
+                    <button onclick="hideDescription()">Retour</button>
+                </div>
+
+                <!-- Brawler 6 : Surge -->
+                <div class="brawler" id="brawler-surge">
+                    <img src="https://cdn.brawlify.com/brawlers/borders/16000038.png" alt="Surge" onclick="showDescription('surge')">
+                    <h3 onclick="showDescription('surge')">Surge</h3>
+                </div>
+                <div id="surge" class="description">
+                    <p>
+                        Avec sa transformation unique et son attitude confiante, Surge est prêt à électrifier ses adversaires 
+                        avec ses capacités. Son courage est inégalé, et il n'abandonnera jamais !
+                    </p>
+                    <button onclick="hideDescription()">Retour</button>
+                </div>
+
+                <!-- Brawler 7 : Ambre -->
+                <div class="brawler" id="brawler-ambre">
+                    <img src="https://cdn.brawlify.com/brawlers/borders/16000040.png" alt="Ambre" onclick="showDescription('ambre')">
+                    <h3 onclick="showDescription('ambre')">Ambre</h3>
+                </div>
+                <div id="ambre" class="description">
+                    <p>
+                        Ambre utilise le feu pour défendre son territoire, avec une passion qui se reflète dans chaque 
+                        étincelle qu'elle lance. Elle apporte la chaleur aux combats et reste toujours motivée !
+                    </p>
+                    <button onclick="hideDescription()">Retour</button>
+                </div>
+
+                <!-- Brawler 8 : Crow -->
+                <div class="brawler" id="brawler-crow">
+                    <img src="https://cdn.brawlify.com/brawlers/borders/16000012.png" alt="Crow" onclick="showDescription('crow')">
+                    <h3 onclick="showDescription('crow')">Crow</h3>
+                </div>
+                <div id="crow" class="description">
+                    <p>
+                        Avec son agilité et ses mouvements furtifs, Crow est le maître des ombres. Il utilise son 
+                        intelligence pour manipuler les situations à son avantage, semant la peur chez ses ennemis !
+                    </p>
+                    <button onclick="hideDescription()">Retour</button>
+                </div>
+
+                <!-- Brawler 9 : Leon -->
+                <div class="brawler" id="brawler-leon">
+                    <img src="https://cdn.brawlify.com/brawlers/borders/16000023.png" alt="Leon" onclick="showDescription('leon')">
+                    <h3 onclick="showDescription('leon')">Leon</h3>
+                </div>
+                <div id="leon" class="description">
+                    <p>
+                        Léon est le ninja mystérieux, capable de se fondre dans l'ombre et d'infliger des dégâts 
+                        dévastateurs à ses adversaires. Avec son sourire, il est prêt à frapper !
+                    </p>
+                    <button onclick="hideDescription()">Retour</button>
+                </div>
+
+                <!-- Brawler 10 : Spike -->
+                <div class="brawler" id="brawler-spike">
+                    <img src="https://cdn.brawlify.com/brawlers/borders/16000005.png" alt="Spike" onclick="showDescription('spike')">
+                    <h3 onclick="showDescription('spike')">Spike</h3>
+                </div>
+                <div id="spike" class="description">
+                    <p>
+                        Spike est le brawler épineux qui utilise ses épines pour se défendre. Sa nature douce et son amour 
+                        pour la paix cachent une force redoutable au combat !
+                    </p>
+                    <button onclick="hideDescription()">Retour</button>
+                </div>
+            </div>
+        </section>
+        <section id="mythic">
+            <h2>Brawlers Mythiques</h2>
+
+            <div class="back-button">
+                <button onclick="openPage('brawlers')">Retour</button>
+            </div>
+            <div class="brawler-grid">    
+        <!-- Brawler : Mortis -->
+            <div class="brawler" id="brawler-mortis">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000011.png" alt="Mortis" onclick="showDescription('mortis')">
+                <h3 onclick="showDescription('mortis')">Mortis</h3>
+            </div>
+            <div id="mortis" class="description">
+                <p>
+                    Mortis avait de grands projets en tant que croque-mort et vampire, mais le fait que personne ne meure à Starr Park a sérieusement freiné ses plans.
+                </p>
+                <button onclick="hideDescription('mortis')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Byron -->
+            <div class="brawler" id="brawler-byron">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000042.png" alt="Byron" onclick="showDescription('byron')">
+                <h3 onclick="showDescription('byron')">Byron</h3>
+            </div>
+            <div id="byron" class="description">
+                <p>
+                    Byron a inventé de nombreuses concoctions et potions qui guérissent ou nuisent de diverses manières... mais la plupart d'entre elles tombent dans la catégorie des nuisances.
+                </p>
+                <button onclick="hideDescription('byron')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Max -->
+            <div class="brawler" id="brawler-max">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000032.png" alt="Max" onclick="showDescription('max')">
+                <h3 onclick="showDescription('max')">Max</h3>
+            </div>
+            <div id="max" class="description">
+                <p>
+                    Poussée par des boissons énergétiques, Max se précipite dès que quelqu'un a besoin d'aide. Elle ne reste jamais assez longtemps pour faire grand-chose... mais elle est vraiment rapide !
+                </p>
+                <button onclick="hideDescription('max')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Lily -->
+            <div class="brawler" id="brawler-lily">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000081.png" alt="Lily" onclick="showDescription('lily')">
+                <h3 onclick="showDescription('lily')">Lily</h3>
+            </div>
+            <div id="lily" class="description">
+                <p>
+                    Nerd dans l'âme et passionnée de sorcellerie, la soif de connaissance de Lily l'a un jour conduite dans les Bois Enchantés, où un incident impliquant une luciole et une plante carnivore a changé sa vie à jamais…
+                </p>
+                <button onclick="hideDescription('lily')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Clancy -->
+            <div class="brawler" id="brawler-clancy">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000083.png" alt="Clancy" onclick="showDescription('clancy')">
+                <h3 onclick="showDescription('clancy')">Clancy</h3>
+            </div>
+            <div id="clancy" class="description">
+                <p>
+                    Avec Clancy, pas de retour en arrière (sauf si Hank le lui ordonne). Il a pleinement embrassé sa fausse vie de crustacé et ferait n'importe quoi pour ses camarades.
+                </p>
+                <button onclick="hideDescription('clancy')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Moe -->
+            <div class="brawler" id="brawler-moe">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000084.png" alt="Moe" onclick="showDescription('moe')">
+                <h3 onclick="showDescription('moe')">Moe</h3>
+            </div>
+            <div id="moe" class="description">
+                <p>
+                    Moe est un rat aveugle, trouvé dans les égouts de Starr Park par Grom, qui l'a vite adopté ! Maintenant membre de l'équipe d'entretien de Starr Park, Moe utilise sa machine de forage spéciale, Driller, pour traverser les tunnels d'égout... et causer un peu de destruction au passage, au grand désarroi d'Ash.
+                </p>
+                <button onclick="hideDescription('moe')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Fang -->
+            <div class="brawler" id="brawler-fang">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000054.png" alt="Fang" onclick="showDescription('fang')">
+                <h3 onclick="showDescription('fang')">Fang</h3>
+            </div>
+            <div id="fang" class="description">
+                <p>
+                    Fang a absorbé tellement de films de kung-fu qu'il vit pratiquement dans l'un d'entre eux. Il est confiant, charmant, et n'utilise jamais ses mains quand il peut donner un coup de pied à la place !
+                </p>
+                <button onclick="hideDescription('fang')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Melodie -->
+            <div class="brawler" id="brawler-melodie">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000078.png" alt="Melodie" onclick="showDescription('melodie')">
+                <h3 onclick="showDescription('melodie')">Melodie</h3>
+            </div>
+            <div id="melodie" class="description">
+                <p>
+                    Quand il s'agit de karaoké, Melodie ne fait preuve d'aucune pitié. Armée de son look kawaii et d'une voix diabolique, elle ne manque jamais de voler la vedette.
+                </p>
+                <button onclick="hideDescription('melodie')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Charlie -->
+            <div class="brawler" id="brawler-charlie">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000074.png" alt="Charlie" onclick="showDescription('charlie')">
+                <h3 onclick="showDescription('charlie')">Charlie</h3>
+            </div>
+            <div id="charlie" class="description">
+                <p>
+                    Itsy bitsy Charlie<br>
+                    A donné un spectacle de folie<br>
+                    Elle a laissé tomber ses cheveux<br>
+                    Et est repartie avec tout votre argent<br>
+                    La foule est venue<br>
+                    Elle a rempli la tente du cirque<br>
+                    Alors Charlie s'est faufilée tout en<br>
+                    Prenant chaque centime !
+                </p>
+                <button onclick="hideDescription('charlie')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Mico -->
+            <div class="brawler" id="brawler-mico">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000075.png" alt="Mico" onclick="showDescription('mico')">
+                <h3 onclick="showDescription('mico')">Mico</h3>
+            </div>
+            <div id="mico" class="description">
+                <p>
+                    Mico est le gars du son à Brawlywood, mais on pourrait penser qu'il est en fait une célébrité tant il se vante et cite des noms. Tempérament chaud et instable, il ne supporte pas les blagues. Ne l'appelez jamais drôle…
+                </p>
+                <button onclick="hideDescription('mico')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Doug -->
+            <div class="brawler" id="brawler-doug">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000071.png" alt="Doug" onclick="showDescription('doug')">
+                <h3 onclick="showDescription('doug')">Doug</h3>
+            </div>
+            <div id="doug" class="description">
+                <p>
+                    Les hot-dogs de Doug prolongeront la durée de vie de vos amis.
+                </p>
+                <button onclick="hideDescription('doug')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Janet -->
+            <div class="brawler" id="brawler-janet">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000057.png" alt="Janet" onclick="showDescription('janet')">
+                <h3 onclick="showDescription('janet')">Janet</h3>
+            </div>
+            <div id="janet" class="description">
+                <p>
+                    Janet fera tout ce qu'il faut pour atteindre le sommet ! En bonus, ses compétences de performeuse lui sont utiles pour secourir sa sœur Bonnie quand elle se retrouve dans le pétrin.
+                </p>
+                <button onclick="hideDescription('janet')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Wally -->
+            <div class="brawler" id="brawler-wally">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000037.png" alt="Wally" onclick="showDescription('wally')">
+                <h3 onclick="showDescription('wally')">Wally</h3>
+            </div>
+            <div id="wally" class="description">
+                <p>
+                    Wally semble être un mignon robot jardinier qui aide Rosa dans le Biodome, mais c'est en réalité un incubateur avec des bras et des roues pour une étrange graine rose !
+                </p>
+                <button onclick="hideDescription('wally')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Monsieur P -->
+            <div class="brawler" id="brawler-monsieur-p">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000031.png" alt="Monsieur P" onclick="showDescription('monsieur-p')">
+                <h3 onclick="showDescription('monsieur-p')">Monsieur P</h3>
+            </div>
+            <div id="monsieur-p" class="description">
+                <p>
+                    Monsieur P est complètement dépassé en essayant de gérer un hôtel. Il passe son temps à crier sur ses employés pour qu'ils travaillent plus vite, comme s'ils pouvaient comprendre ses marmonnements !
+                </p>
+                <button onclick="hideDescription('monsieur-p')">Retour</button>
+            </div>
+        
+            <!-- Brawler : R-T -->
+            <div class="brawler" id="brawler-rt">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000066.png" alt="R-T" onclick="showDescription('rt')">
+                <h3 onclick="showDescription('rt')">R-T</h3>
+            </div>
+            <div id="rt" class="description">
+                <p>
+                    R-T est conçu pour être un kiosque d'informations utile, mais il a aussi la tâche de surveiller toutes les activités au sein de Starr Park. Pour des raisons de sécurité, bien sûr.
+                </p>
+                <button onclick="hideDescription('rt')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Tara -->
+            <div class="brawler" id="brawler-tara">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000017.png" alt="Tara" onclick="showDescription('tara')">
+                <h3 onclick="showDescription('tara')">Tara</h3>
+            </div>
+            <div id="tara" class="description">
+                <p>
+                    Tara a vu dans les cartes que de grandes difficultés approchent ! Mais ne désespérez pas... elle a une superbe sélection de bibelots magiques à vendre pour vous aider.
+                </p>
+                <button onclick="hideDescription('tara')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Djinn -->
+            <div class="brawler" id="brawler-djinn">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000021.png" alt="Djinn" onclick="showDescription('djinn')">
+                <h3 onclick="showDescription('djinn')">Djinn</h3>
+            </div>
+            <div id="djinn" class="description">
+                <p>
+                    La plupart des gens voient en Djinn un petit gars amusant en costume. Ce qu'ils ne voient pas, c'est que sa personnalité est divisée entre son corps et sa théière.
+                </p>
+                <button onclick="hideDescription('djinn')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Buzz -->
+            <div class="brawler" id="brawler-buzz">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000049.png" alt="Buzz" onclick="showDescription('buzz')">
+                <h3 onclick="showDescription('buzz')">Buzz</h3>
+            </div>
+            <div id="buzz" class="description">
+                <p>
+                    Buzz est un maître-nageur au parc aquatique Velocirapids et il est vraiment pointilleux sur les règles. Il adore clairement exercer au maximum la petite autorité qu'il a.
+                </p>
+                <button onclick="hideDescription('buzz')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Colonel Médor -->
+            <div class="brawler" id="brawler-colonel-medor">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000044.png" alt="Colonel Médor" onclick="showDescription('colonel-medor')">
+                <h3 onclick="showDescription('colonel-medor')">Colonel Médor</h3>
+            </div>
+            <div id="colonel-medor" class="description">
+                <p>
+                    Colonel Médor est un colonel spatial loyal et très discipliné qui mène son équipe d'une main de fer. Mais au fond, il veut juste être un bon toutou !
+                </p>
+                <button onclick="hideDescription('colonel-medor')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Squeak -->
+            <div class="brawler" id="brawler-squeak">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000047.png" alt="Squeak" onclick="showDescription('squeak')">
+                <h3 onclick="showDescription('squeak')">Squeak</h3>
+            </div>
+            <div id="squeak" class="description">
+                <p>
+                    Squeak est une boule d'énergie joyeuse qui adore son créateur, Colonel Médor. C'est un plaisir de l'avoir autour, du moins si vous ne savez pas qu'il est fait de bave de chien.
+                </p>
+                <button onclick="hideDescription('squeak')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Gray -->
+            <div class="brawler" id="brawler-gray">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000064.png" alt="Gray" onclick="showDescription('gray')">
+                <h3 onclick="showDescription('gray')">Gray</h3>
+            </div>
+            <div id="gray" class="description">
+                <p>
+                    Gray se prend pour un personnage de vieux film muet. Il prend le rôle au sérieux, mais oublie parfois de garder la bouche fermée en faisant ses tirs avec les doigts.
+                </p>
+                <button onclick="hideDescription('gray')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Willow -->
+            <div class="brawler" id="brawler-willow">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000067.png" alt="Willow" onclick="showDescription('willow')">
+                <h3 onclick="showDescription('willow')">Willow</h3>
+            </div>
+            <div id="willow" class="description">
+                <p>
+                    Willow travaille comme gondolière dans le Marais de l'Amour. Elle offre aux couples en quête d'une soirée romantique le moment le plus effrayant et inquiétant qu'ils puissent imaginer.
+                </p>
+                <button onclick="hideDescription('willow')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Otis -->
+            <div class="brawler" id="brawler-otis">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000059.png" alt="Otis" onclick="showDescription('otis')">
+                <h3 onclick="showDescription('otis')">Otis</h3>
+            </div>
+            <div id="otis" class="description">
+                <p>
+                    Otis est un jeune street artist en pleine ascension qui crée en projetant de l'encre sur les murs. Personne ne connaît sa véritable identité, ce qui ajoute à son mystère !
+                </p>
+                <button onclick="hideDescription('otis')">Retour</button>
+            </div>
+        
+            <!-- Brawler : Eve -->
+            <div class="brawler" id="brawler-eve">
+                <img src="https://cdn.brawlify.com/brawlers/borders/16000056.png" alt="Eve" onclick="showDescription('eve')">
+                <h3 onclick="showDescription('eve')">Eve</h3>
+            </div>
+            <div id="eve" class="description">
+                <p>
+                    Le but dans la vie d'Eve est de protéger et de choyer ses précieux bébés ! Elle fera tout pour eux.
+                </p>
+                <button onclick="hideDescription('eve')">Retour</button>
+            </div>
+        </section>   
+    </div>
+</div>
+    
+
+    <script>
+        function openPage(pageId) {
+            // Masquer toutes les pages
+            var pages = document.querySelectorAll('section');
+            pages.forEach(function(page) {
+                page.classList.remove('active');
+            });
+
+            // Afficher la page sélectionnée
+            var page = document.getElementById(pageId);
+            if (page) {
+                page.classList.add('active');
+            }
+
+            // Afficher le sous-menu pour les Brawlers si nécessaire
+            if (pageId === 'brawlers') {
+                document.getElementById('brawlersMenu').style.display = 'block';
+            } else {
+                document.getElementById('brawlersMenu').style.display = 'none';
+            }
+        }
+
+        function showDescription(brawlerId) {
+            // Masquer tous les brawlers
+            var brawlers = document.querySelectorAll('.brawler');
+            brawlers.forEach(function(brawler) {
+                brawler.style.display = 'none';
+            });
+
+            // Masquer toutes les descriptions
+            var descriptions = document.querySelectorAll('.description');
+            descriptions.forEach(function(desc) {
+                desc.style.display = 'none';
+            });
+
+            // Afficher la description sélectionnée
+            var description = document.getElementById(brawlerId);
+            if (description) {
+                description.style.display = 'block';
+            }
+        }
+
+        function hideDescription() {
+            // Réafficher tous les brawlers
+            var brawlers = document.querySelectorAll('.brawler');
+            brawlers.forEach(function(brawler) {
+                brawler.style.display = 'flex'; // Remettre le style d'affichage d'origine
+            });
+
+            // Masquer toutes les descriptions
+            var descriptions = document.querySelectorAll('.description');
+            descriptions.forEach(function(desc) {
+                desc.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
